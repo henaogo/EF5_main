@@ -5,14 +5,17 @@
 #include <cstring>
 
 
-SimpleInundation::SimpleInundation() {
-  // Santi
-  public:
-    int GetChannelIndex(size_t i) const { return iNodes[i].channelIndex; }
-    size_t GetNumINodes() const { return iNodes.size(); }
-}
+SimpleInundation::SimpleInundation() {}
 
 SimpleInundation::~SimpleInundation() {}
+
+int SimpleInundation::GetChannelIndex(size_t i) const {
+    return iNodes[i].channelIndex;
+}
+
+size_t SimpleInundation::GetNumINodes() const {
+    return iNodes.size();
+}
 
 bool SimpleInundation::InitializeModel(
     std::vector<GridNode> *newNodes,

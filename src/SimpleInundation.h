@@ -22,6 +22,8 @@ public:
                        std::vector<FloatGrid *> *paramGrids);
   bool Inundation(std::vector<float> *discharge, std::vector<float> *depth);
   const char *GetName() { return "simpleinundation"; }
+  int GetChannelIndex(size_t i) const;
+  size_t GetNumINodes() const;
 
 private:
   void
