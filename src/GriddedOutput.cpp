@@ -23,6 +23,7 @@ const char *GriddedOutputText[] = {
     "maxthresholdexceedance",
     "maxthresholdexceedancep",
     "precipaccum",
+    "handcatchment"
 };
 
 const int GriddedOutputFlags[] = {
@@ -45,4 +46,5 @@ const int GriddedOutputFlags[] = {
     OG_MAXTHRES,
     OG_MAXTHRESP,
     OG_PRECIPACCUM,
+    OG_HANDCATCHMENT
 };
