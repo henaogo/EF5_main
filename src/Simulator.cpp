@@ -1540,7 +1540,7 @@ void Simulator::SimulateDistributed(bool trackPeaks) {
           if (siModel) {
               std::vector<float> handcatchment(nodes.size());
               for (size_t i = 0; i < nodes.size(); i++) {
-                  handcatchment[i] = static_cast<float>(siModel->iNodes[i].channelIndex);
+                  handcatchment[i] = static_cast<float>(siModel->GetChannelIndex(i));
               }
               sprintf(buffer, "%s/handcatchment.%s.%s.tif", outputPath,
                       currentTimeTextOutput.GetName(), iModel->GetName());

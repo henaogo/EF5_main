@@ -4,7 +4,13 @@
 #include <cstdio>
 #include <cstring>
 
-SimpleInundation::SimpleInundation() {}
+
+SimpleInundation::SimpleInundation() {
+  // Santi
+  public:
+    int GetChannelIndex(size_t i) const { return iNodes[i].channelIndex; }
+    size_t GetNumINodes() const { return iNodes.size(); }
+}
 
 SimpleInundation::~SimpleInundation() {}
 
