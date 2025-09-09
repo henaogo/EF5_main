@@ -1535,13 +1535,17 @@ void Simulator::SimulateDistributed(bool trackPeaks) {
         gridWriter.WriteGrid(&nodes, &currentDepth, buffer, false);
       }
       if (iModel && (griddedOutputs & OG_HANDCATCHMENT) == OG_HANDCATCHMENT) {
-          std::vector<float> handcatchment(nodes.size());
-          for (size_t i = 0; i < nodes.size(); i++) {
-              handcatchment[i] = static_cast<float>(iModel->iNodes[i].channelIndex);
+          // Cast iModel to SimpleInundation to access iNodes
+          SimpleInundation* siModel = dynamic_cast<SimpleInundation*>(iModel);
+          if (siModel) {
+              std::vector<float> handcatchment(nodes.size());
+              for (size_t i = 0; i < nodes.size(); i++) {
+                  handcatchment[i] = static_cast<float>(siModel->iNodes[i].channelIndex);
+              }
+              sprintf(buffer, "%s/handcatchment.%s.%s.tif", outputPath,
+                      currentTimeTextOutput.GetName(), iModel->GetName());
+              gridWriter.WriteGrid(&nodes, &handcatchment, buffer, false);
           }
-          sprintf(buffer, "%s/handcatchment.%s.%s.tif", outputPath,
-                  currentTimeTextOutput.GetName(), iModel->GetName());
-          gridWriter.WriteGrid(&nodes, &handcatchment, buffer, false);
       }
       if ((griddedOutputs & OG_UNITQ) == OG_UNITQ) {
         for (size_t i = 0; i < currentQ.size(); i++) {
