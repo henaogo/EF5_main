@@ -2332,5 +2332,3 @@ bool Simulator::InitializeGridParams(TaskConfigSection *task) {
 
   return true;
 }
-  return true;
-}
