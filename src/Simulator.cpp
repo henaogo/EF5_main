@@ -315,8 +315,7 @@ bool Simulator::InitializeSimu(TaskConfigSection *task) {
   missingQPF = 0;
 
   griddedOutputs = task->GetGriddedOutputs();
-  useStates = task->UseStates();
-  saveStates = task->SaveStates();
+  useStates = task->SaveStates();
 
   // Initialize the storage of contributing precip & PET
   avgPrecip.resize(gauges->size());
@@ -1542,8 +1541,7 @@ void Simulator::SimulateDistributed(bool trackPeaks) {
               for (size_t i = 0; i < nodes.size(); i++) {
                   handcatchment[i] = static_cast<float>(siModel->GetChannelIndex(i));
               }
-              sprintf(buffer, "%s/handcatchment.%s.%s.tif", outputPath,
-                      currentTimeTextOutput.GetName(), iModel->GetName());
+              sprintf(buffer, "%s/handcatchment.%s.tif", outputPath, iModel->GetName());
               gridWriter.WriteGrid(&nodes, &handcatchment, buffer, false);
           }
       }
@@ -2332,5 +2330,7 @@ bool Simulator::InitializeGridParams(TaskConfigSection *task) {
     }
   }
 
+  return true;
+}
   return true;
 }
